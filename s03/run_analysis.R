@@ -24,3 +24,6 @@ names(data)[ncol(data)] <- "activity_name"
 data_tidy <- data[,grep("subject|activity|mean", names(data))]
 #gathering the averages for all variables
 data_tidy <- gather(data_tidy, key = "variable", value = "average", -c(activity, activity_name, subject))
+
+write.table(data, "final_data.txt", row.names = FALSE)
+write.table(data_tidy, "tidy_data.txt", row.names = FALSE)
